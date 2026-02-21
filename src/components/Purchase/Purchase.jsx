@@ -10,6 +10,7 @@ import useToken from "../../hooks/useToken";
 import { 
   removePurchaseByIdAction,
   changeStatusByIdAction,
+  editPurchaseByIdAction,
 } from "../../store/slices/purchases.slice.js"; 
 
 // constants
@@ -37,7 +38,7 @@ export default function Purchase({ data }) {
 
   if (isEditMode) {
     const onSave = (title, amount) => {
-      // TODO: dispatch new title and amount
+      dispatch(editPurchaseByIdAction([id, title, amount]));
     };
 
     return (
