@@ -10,9 +10,28 @@ const purchasesSlice = createSlice({
     setPurchasesAction(state, { payload }) {
       state.purchases = payload;
     },
+
+    removePurchaseByIdAction(state, {payload}) {
+      state.purchases = state.purchases.filter(p => p.id !== payload);
+    },
+
+    changeStatusByIdAction(state, {payload}) {
+      const [id, newStatus] = payload;
+
+      for (let i = 0; i < state.purchases.length; ++i) {
+        if (state.purchases[i].id === id) {
+          state.purchases[i].status = newStatus;
+          break;
+        }
+      }
+    }
   },
 });
 
 export default purchasesSlice.reducer;
 
-export const { setPurchasesAction } = purchasesSlice.actions;
+export const { 
+  setPurchasesAction,
+  removePurchaseByIdAction,
+  changeStatusByIdAction,
+} = purchasesSlice.actions;

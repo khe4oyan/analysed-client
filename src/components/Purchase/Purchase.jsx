@@ -1,9 +1,16 @@
 // libs
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 // hooks
 import useUserData from "../../hooks/useUserData";
 import useToken from "../../hooks/useToken";
+
+// actions
+import { 
+  removePurchaseByIdAction,
+  changeStatusByIdAction,
+} from "../../store/slices/purchases.slice.js"; 
 
 // constants
 import SERVER from "../../constants/api";
@@ -26,6 +33,7 @@ export default function Purchase({ data }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const { userData } = useUserData();
   const { token } = useToken();
+  const dispatch = useDispatch();
 
   if (isEditMode) {
     const onSave = (title, amount) => {
@@ -64,7 +72,7 @@ export default function Purchase({ data }) {
       .then((r) => r.json())
       .then((d) => {
         if (d?.success) {
-          // TODO: change status in store by id
+          dispatch(changeStatusByIdAction([id, "submitted"]));
         } else {
           alert(d?.message);
         }
@@ -81,10 +89,8 @@ export default function Purchase({ data }) {
     })
       .then((r) => r.json())
       .then((d) => {
-        console.log(d);
-
         if (d?.success) {
-          // TODO: change status in store by id
+          dispatch(changeStatusByIdAction([id, "approved"]));
         } else {
           alert(d?.message);
         }
@@ -102,7 +108,7 @@ export default function Purchase({ data }) {
       .then((r) => r.json())
       .then((d) => {
         if (d?.success) {
-          // TODO: change status in store by id
+          dispatch(changeStatusByIdAction([id, "rejected"]));
         } else {
           alert(d?.message);
         }
@@ -121,7 +127,7 @@ export default function Purchase({ data }) {
         .then((r) => r.json())
         .then((d) => {
           if (d?.success) {
-            // TODO: remove from store by id
+            dispatch(removePurchaseByIdAction(id));
           } else {
             alert(d?.message);
           }
