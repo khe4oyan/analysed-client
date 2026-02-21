@@ -5,13 +5,14 @@ import { useDispatch } from "react-redux";
 // hooks
 import useUserData from "../../hooks/useUserData";
 import useToken from "../../hooks/useToken";
+import useUserDataById from "../../hooks/useUserDataById.jsx";
 
 // actions
-import { 
+import {
   removePurchaseByIdAction,
   changeStatusByIdAction,
   editPurchaseByIdAction,
-} from "../../store/slices/purchases.slice.js"; 
+} from "../../store/slices/purchases.slice.js";
 
 // constants
 import SERVER from "../../constants/api";
@@ -25,10 +26,6 @@ export default function Purchase({ data }) {
     title,
     amount,
     status,
-    // created_by_id,
-    // approved_by_id,
-    // created_at,
-    // updated_at,
   } = data;
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -143,8 +140,6 @@ export default function Purchase({ data }) {
       </p>
       <p>{status}</p>
 
-      <hr />
-
       {isStaff && status === "draft" && (
         <>
           <button onClick={onEdit}>edit</button>
@@ -172,25 +167,25 @@ function PurchaseEdit({ title, amount, onSave, onClose, token, id }) {
 
   const onClickSave = () => {
     fetch(`${SERVER}/purchase/edit/${id}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          title: newTitle,
-          amount: newAmount,
-        })
-      })
-        .then((r) => r.json())
-        .then((d) => {
-          if (d?.success) {
-            onSave(newTitle, newAmount);
-            onClose();
-          } else {
-            console.log(d?.message);
-          }
-        });
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title: newTitle,
+        amount: newAmount,
+      }),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.success) {
+          onSave(newTitle, newAmount);
+          onClose();
+        } else {
+          console.log(d?.message);
+        }
+      });
   };
 
   return (
@@ -200,14 +195,16 @@ function PurchaseEdit({ title, amount, onSave, onClose, token, id }) {
         placeholder="New title"
         value={newTitle}
         onChange={(e) => setNewTitle(e.target.value)}
-      /><br />
+      />
+      <br />
 
       <input
         type="text"
         placeholder="New amount"
         value={newAmount}
         onChange={(e) => setNewAmount(e.target.value)}
-      /><br />
+      />
+      <br />
 
       <button onClick={onClickSave}>save</button>
       <button onClick={onClose}>cancel</button>

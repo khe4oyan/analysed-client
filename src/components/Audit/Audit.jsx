@@ -15,9 +15,7 @@ export default function Audit({ data }) {
   } = data;
 
   const { userData: user } = useUserData();
-
   const {userData} = useUserDataById(user_id);
-  console.log(userData);
   
   return (
     <div className={classes.root}>
