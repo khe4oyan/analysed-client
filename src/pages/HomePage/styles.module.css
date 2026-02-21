@@ -1,1 +1,10 @@
 .root {}
+
+.adminPanel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 5px;
+}
