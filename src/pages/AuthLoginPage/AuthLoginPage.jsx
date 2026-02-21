@@ -37,11 +37,11 @@ export default function AuthLoginPage() {
             updateToken(d.token);
             navigate(ROUTES.HOME);
           } else {
-            alert(d?.message);
+            console.log(d?.message);
           }
         });
     } else {
-      alert("Invalid inputs");
+      console.log("Invalid inputs");
     }
   };
 

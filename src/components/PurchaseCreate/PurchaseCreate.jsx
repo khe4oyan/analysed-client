@@ -38,7 +38,7 @@ export default function PurchaseCreate() {
         if (d?.success) {
           dispatch(addNewPurchaseAction(d.purchaseData));
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   };

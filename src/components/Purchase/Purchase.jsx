@@ -75,7 +75,7 @@ export default function Purchase({ data }) {
         if (d?.success) {
           dispatch(changeStatusByIdAction([id, "submitted"]));
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   };
@@ -93,7 +93,7 @@ export default function Purchase({ data }) {
         if (d?.success) {
           dispatch(changeStatusByIdAction([id, "approved"]));
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   };
@@ -111,7 +111,7 @@ export default function Purchase({ data }) {
         if (d?.success) {
           dispatch(changeStatusByIdAction([id, "rejected"]));
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   };
@@ -130,7 +130,7 @@ export default function Purchase({ data }) {
           if (d?.success) {
             dispatch(removePurchaseByIdAction(id));
           } else {
-            alert(d?.message);
+            console.log(d?.message);
           }
         });
     }
@@ -188,7 +188,7 @@ function PurchaseEdit({ title, amount, onSave, onClose, token, id }) {
             onSave(newTitle, newAmount);
             onClose();
           } else {
-            alert(d?.message);
+            console.log(d?.message);
           }
         });
   };

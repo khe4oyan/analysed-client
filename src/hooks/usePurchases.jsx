@@ -31,7 +31,7 @@ export default function usePurchases(userData) {
         if (d?.success) {
           dispatch(setPurchasesAction(d.purchases));
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   }, [userData]);

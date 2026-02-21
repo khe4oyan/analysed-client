@@ -34,11 +34,11 @@ export default function AuthRegisterPage() {
           if (d?.success) {
             navigate(ROUTES.AUTH_LOGIN);
           } else {
-            alert(d?.message);
+            console.log(d?.message);
           }
         });
     } else {
-      alert("Invalid inputs");
+      console.log("Invalid inputs");
     }
   };
 

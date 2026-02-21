@@ -29,7 +29,7 @@ export default function Header() {
           updateToken(null);
           navigate(ROUTES.AUTH);
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   };

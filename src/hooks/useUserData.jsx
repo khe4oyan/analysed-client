@@ -1,6 +1,7 @@
 // libs
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // hooks
 import useToken from "./useToken";
@@ -10,15 +11,18 @@ import {setUserDataAction} from '../store/slices/userData.slice.js'
 
 // constants
 import SERVER from "../constants/api";
+import ROUTES from "../constants/routes.js";
 
 export default function useUserData() {
   const { userData } = useSelector(s => s.userDataSlice);
-  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token } = useToken();
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      navigate(ROUTES.AUTH);
+    }
     
     fetch(`${SERVER}/auth/me`, {
       method: "GET",
@@ -32,7 +36,7 @@ export default function useUserData() {
         if (d?.success) {
           dispatch(setUserDataAction(d.userData));
         } else {
-          alert(d?.message);
+          console.log(d?.message);
         }
       });
   }, [token]);
