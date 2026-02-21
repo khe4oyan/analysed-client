@@ -7,6 +7,10 @@ const purchasesSlice = createSlice({
   },
 
   reducers: {
+    addNewPurchaseAction(state, {payload}) {
+      state.purchases.push(payload);
+    },
+    
     setPurchasesAction(state, { payload }) {
       state.purchases = payload;
     },
@@ -31,6 +35,7 @@ const purchasesSlice = createSlice({
 export default purchasesSlice.reducer;
 
 export const { 
+  addNewPurchaseAction,
   setPurchasesAction,
   removePurchaseByIdAction,
   changeStatusByIdAction,
