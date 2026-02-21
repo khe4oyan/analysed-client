@@ -1,3 +1,14 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+button, input {
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}

@@ -1,3 +1,3 @@
-const SERVER = "localhost:8000/api";
+const SERVER = "http://localhost:8000/api";
 
 export default SERVER;
