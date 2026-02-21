@@ -1,7 +1,29 @@
+// libs
+import { Routes, Route } from "react-router-dom";
+
+// pages
+import HomePage from './pages/HomePage';
+import AuditPage from './pages/AuditPage';
+import AuthPage from './pages/AuthPage';
+import AuthRegisterPage from './pages/AuthRegisterPage';
+import AuthLoginPage from './pages/AuthLoginPage';
+
+// constants
+import ROUTES from './constants/routes';
+
 function App() {
 	return (
 		<div>
-			App
+			<Routes>
+				<Route path={ROUTES.HOME} element={<HomePage />}>
+					<Route path={ROUTES.AUDIT} element={<AuditPage />}/>
+				</Route>
+
+				<Route path={ROUTES.AUTH} element={<AuthPage />}>
+					<Route path={ROUTES.AUTH_REGISTER} element={<AuthRegisterPage />}/>
+					<Route path={ROUTES.AUTH_LOGIN} element={<AuthLoginPage />}/>
+				</Route>
+			</Routes>
 		</div>
 	);
 }
