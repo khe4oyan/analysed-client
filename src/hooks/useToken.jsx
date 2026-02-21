@@ -1,8 +1,12 @@
 // libs
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+// actions
+import {setTokenAction } from '../store/slices/userData.slice.js';
 
 export default function useToken() {
-  const [token, setToken] = useState(localStorage.getItem("token") ?? null);
+  const { token } = useSelector(d => d.userDataSlice); 
+  const dispatch = useDispatch();
 
   const updateToken = (newToken) => {
     if (newToken) {
@@ -11,7 +15,7 @@ export default function useToken() {
       localStorage.removeItem("token");
     }
     
-    setToken(newToken);
+    dispatch(setTokenAction(newToken));
   };
 
   return { token, updateToken };
