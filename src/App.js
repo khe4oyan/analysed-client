@@ -1,5 +1,5 @@
 // libs
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // pages
 import HomePage from './pages/HomePage';
@@ -17,11 +17,13 @@ function App() {
 		<div>
 			<Routes>
 				<Route path={ROUTES.HOME} element={<HomePage />}>
+					<Route index element={<Navigate to={ROUTES.PURCHASES}/>}/>
 					<Route path={ROUTES.AUDIT} element={<AuditPage />}/>
 					<Route path={ROUTES.PURCHASES} element={<PurchasesPage />}/>
 				</Route>
 
 				<Route path={ROUTES.AUTH} element={<AuthPage />}>
+					<Route index element={<Navigate to={ROUTES.AUTH_LOGIN}/>}/>
 					<Route path={ROUTES.AUTH_REGISTER} element={<AuthRegisterPage />}/>
 					<Route path={ROUTES.AUTH_LOGIN} element={<AuthLoginPage />}/>
 				</Route>
