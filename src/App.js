@@ -12,6 +12,9 @@ import AuthLoginPage from './pages/AuthLoginPage';
 // constants
 import ROUTES from './constants/routes';
 
+// styles
+import './app.css';
+
 function App() {
 	return (
 		<div>
