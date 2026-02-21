@@ -56,7 +56,7 @@ export default function AuthLoginPage() {
 
       <input
         type="text"
-        placeholder="Pass"
+        placeholder="Password"
         value={password}
         onChange={(e) => setPass(e.target.value)}
       />

@@ -2,6 +2,9 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
+// components
+import Header from '../../components/Header';
+
 // hooks
 import useToken from '../../hooks/useToken';
 
@@ -23,6 +26,7 @@ export default function HomePage() {
 
   return (
     <div className={classes.root}>
+      <Header />
       <Outlet />
     </div>
   )

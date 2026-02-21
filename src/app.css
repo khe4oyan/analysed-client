@@ -2,6 +2,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  max-width: 700px;
+  margin: auto;
+}
+
 button, input {
   padding: 5px 10px;
   outline: none;

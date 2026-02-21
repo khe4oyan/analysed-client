@@ -67,7 +67,7 @@ export default function AuthRegisterPage() {
 
       <button onClick={onLogin}>login</button>
 
-      <Link to={ROUTES.AUTH_REGISTER}>Go to register</Link>
+      <Link to={ROUTES.AUTH_LOGIN}>Go to login</Link>
     </div>
   );
 }
